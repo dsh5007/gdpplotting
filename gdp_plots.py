@@ -8,19 +8,21 @@ import matplotlib.pyplot as plt
 # the columns and their gdp data becomes the rows
 
 # read data into a pandas dataframe and transpose
-filename= sys.argv[1] # "gapminder_gdp_oceania.csv"
-data = pandas.read_csv(filename, index_col = 'country').T
+filelist= sys.argv[1:] # "gapminder_gdp_oceania.csv"
 
-# create a plot the transposed data
-ax = data.plot(title=filename)
+for filename in filelist:
+  data = pandas.read_csv(filename, index_col = 'country').T
 
-#Add axes
-ax.set_xlabel("year")
-ax.set_ylabel("GDP per capita")
+  # create a plot the transposed data
+  ax = data.plot(title=filename)
 
-#axes tick properties
-ax.set_xticks(range((len(data.index))))
-ax.set_xticklabels(data.index, rotation=45)
+  #Add axes
+  ax.set_xlabel("year")
+  ax.set_ylabel("GDP per capita")
 
-# display the plot
-plt.show()
+  #axes tick properties
+  ax.set_xticks(range((len(data.index))))
+  ax.set_xticklabels(data.index, rotation=45)
+
+  # display the plot
+  plt.show()
