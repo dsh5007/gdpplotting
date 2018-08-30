@@ -1,4 +1,5 @@
 import pandas
+import sys
 # we need to import part of matplotlib
 # because we are no longer in a notebook
 import matplotlib.pyplot as plt
@@ -7,7 +8,7 @@ import matplotlib.pyplot as plt
 # the columns and their gdp data becomes the rows
 
 # read data into a pandas dataframe and transpose
-filename= "gapminder_gdp_oceania.csv"
+filename= sys.argv[1] # "gapminder_gdp_oceania.csv"
 data = pandas.read_csv(filename, index_col = 'country').T
 
 # create a plot the transposed data
