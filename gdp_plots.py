@@ -8,8 +8,19 @@ import glob
 # load data and transpose so that country names are
 # the columns and their gdp data becomes the rows
 
+if len(sys.argv) == 1:
+ print('NO ARGUMENTS SUPPLIED!!!!')
+ print("try using: python gdp_plots.py <filename> or python gdp_plots.py -a")
+ print("try using: the -a option looks for all files")
+ exit()
+ 
 if sys.argv[1] == '-a'   :
   filelist = glob.glob("*gdp*.csv")
+  if len(filelist) == 0:
+    print('No files in diectory')
+    print('The filelist is empty - make sure there are files listed')
+    print('Filelist print = ',filelist)
+    exit()
 else:
   filelist = sys.argv[1:]
 
